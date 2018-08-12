@@ -3,7 +3,7 @@ using BigCorp.Utility;
 
 namespace BigCorp.EmployeeDomain
 {
-    public class Name : IEquatable<Name>
+    public class Name : DomainObject<Name>
     {
         public string FirstName { get; }
         public string MiddleName { get; }
@@ -20,11 +20,8 @@ namespace BigCorp.EmployeeDomain
             Title = title;
         }
 
-        public bool Equals(Name other)
+        protected override bool CheckEquality(Name other)
         {
-            if (ReferenceEquals(null, other)) return false;
-            if (ReferenceEquals(this, other)) return true;
-
             return FirstName.AreEqualDespiteCase(other.FirstName) &&
                    LastName.AreEqualDespiteCase(other.LastName) &&
                    MiddleName.AreEqualDespiteCase(other.MiddleName) &&
@@ -32,15 +29,13 @@ namespace BigCorp.EmployeeDomain
                    Title.AreEqualDespiteCase(other.Title);
         }
 
-        public override bool Equals(object obj)
+        protected override bool CheckEqualityUsingOperator(DomainObject<Name> other)
         {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
-            return Equals((Name)obj);
+            var name = (Name) other;
+            return CheckEquality(name);
         }
 
-        public override int GetHashCode()
+        protected override int CalculateHashCode()
         {
             return HashCodeBuilder.CreateNew()
                 .WithCaseInsensitiveString(FirstName)
@@ -50,24 +45,6 @@ namespace BigCorp.EmployeeDomain
                 .WithCaseInsensitiveString(Title)
                 .Build()
                 .Value;
-        }
-
-        public static bool operator ==(Name first, Name second)
-        {
-            if (ReferenceEquals(first, second)) return true;
-            if ((object)first == null) return false;
-            if ((object)second == null) return false;
-
-            return first.FirstName.AreEqualDespiteCase(second.FirstName) &&
-                   first.LastName.AreEqualDespiteCase(second.LastName) &&
-                   first.MiddleName.AreEqualDespiteCase(second.MiddleName) &&
-                   first.Suffix.AreEqualDespiteCase(second.Suffix) &&
-                   first.Title.AreEqualDespiteCase(second.Title);
-        }
-
-        public static bool operator !=(Name first, Name second)
-        {
-            return !(first == second);
         }
     }
 }

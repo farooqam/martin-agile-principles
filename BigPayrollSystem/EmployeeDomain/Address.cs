@@ -1,6 +1,8 @@
-﻿namespace BigCorp.EmployeeDomain
+﻿using System;
+
+namespace BigCorp.EmployeeDomain
 {
-    public abstract class Address
+    public abstract class Address : DomainObject<Address>
     {
         public string CareOf { get; }
         public string Line1 { get; }

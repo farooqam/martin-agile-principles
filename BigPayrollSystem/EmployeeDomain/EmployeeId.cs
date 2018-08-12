@@ -3,7 +3,7 @@ using BigCorp.Utility;
 
 namespace BigCorp.EmployeeDomain
 {
-    public class EmployeeId : IEquatable<EmployeeId>
+    public sealed class EmployeeId : DomainObject<EmployeeId>
     {
         public string Value { get; }
 
@@ -13,42 +13,22 @@ namespace BigCorp.EmployeeDomain
             Value = id;
         }
 
-        public bool Equals(EmployeeId other)
+        protected override bool CheckEquality(EmployeeId other)
         {
-            if (ReferenceEquals(null, other)) return false;
-            if (ReferenceEquals(this, other)) return true;
             return string.Equals(Value, other.Value, StringComparison.OrdinalIgnoreCase);
         }
 
-        public override bool Equals(object obj)
+        protected override bool CheckEqualityUsingOperator(DomainObject<EmployeeId> other)
         {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
-            return Equals((EmployeeId) obj);
+            return string.Compare(this.Value, ((EmployeeId) other).Value, StringComparison.OrdinalIgnoreCase) == 0;
         }
 
-        public static bool operator ==(EmployeeId first, EmployeeId second)
-        {
-            if (ReferenceEquals(first, second)) return true;
-            if ((object)first == null) return false;
-            if ((object)second == null) return false;
-
-            return string.Compare(first.Value, second.Value, StringComparison.OrdinalIgnoreCase) == 0;
-        }
-
-        public static bool operator !=(EmployeeId first, EmployeeId second)
-        {
-            return !(first == second);
-        }
-
-        public override int GetHashCode()
+        protected override int CalculateHashCode()
         {
             return HashCodeBuilder.CreateNew()
                 .WithCaseInsensitiveString(Value)
                 .Build()
                 .Value;
         }
-
     }
 }
