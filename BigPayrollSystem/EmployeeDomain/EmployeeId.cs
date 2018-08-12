@@ -44,7 +44,10 @@ namespace BigCorp.EmployeeDomain
 
         public override int GetHashCode()
         {
-            return (Value != null ? StringComparer.OrdinalIgnoreCase.GetHashCode(Value) : 0);
+            return HashCodeBuilder.CreateNew()
+                .WithCaseInsensitiveString(Value)
+                .Build()
+                .Value;
         }
 
     }

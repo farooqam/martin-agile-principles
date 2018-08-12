@@ -42,13 +42,14 @@ namespace BigCorp.EmployeeDomain
 
         public override int GetHashCode()
         {
-            var hashCode = 385229220;
-            hashCode = hashCode * -1521134295 + StringComparer.OrdinalIgnoreCase.GetHashCode(FirstName);
-            hashCode = hashCode * -1521134295 + StringComparer.OrdinalIgnoreCase.GetHashCode(MiddleName);
-            hashCode = hashCode * -1521134295 + StringComparer.OrdinalIgnoreCase.GetHashCode(LastName);
-            hashCode = hashCode * -1521134295 + StringComparer.OrdinalIgnoreCase.GetHashCode(Suffix);
-            hashCode = hashCode * -1521134295 + StringComparer.OrdinalIgnoreCase.GetHashCode(Title);
-            return hashCode;
+            return HashCodeBuilder.CreateNew()
+                .WithCaseInsensitiveString(FirstName)
+                .WithCaseInsensitiveString(MiddleName)
+                .WithCaseInsensitiveString(LastName)
+                .WithCaseInsensitiveString(Suffix)
+                .WithCaseInsensitiveString(Title)
+                .Build()
+                .Value;
         }
 
         public static bool operator ==(Name first, Name second)

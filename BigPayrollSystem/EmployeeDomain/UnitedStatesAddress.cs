@@ -41,15 +41,16 @@ namespace BigCorp.EmployeeDomain
 
         public override int GetHashCode()
         {
-            var hashCode = 385229220;
-            hashCode = hashCode * -1521134295 + StringComparer.OrdinalIgnoreCase.GetHashCode(CareOf);
-            hashCode = hashCode * -1521134295 + StringComparer.OrdinalIgnoreCase.GetHashCode(Line1);
-            hashCode = hashCode * -1521134295 + StringComparer.OrdinalIgnoreCase.GetHashCode(Line2);
-            hashCode = hashCode * -1521134295 + StringComparer.OrdinalIgnoreCase.GetHashCode(City);
-            hashCode = hashCode * -1521134295 + StringComparer.OrdinalIgnoreCase.GetHashCode(State);
-            hashCode = hashCode * -1521134295 + StringComparer.OrdinalIgnoreCase.GetHashCode(Country);
-            hashCode = hashCode * -1521134295 + StringComparer.OrdinalIgnoreCase.GetHashCode(PostalCode);
-            return hashCode;
+            return HashCodeBuilder.CreateNew()
+                .WithCaseInsensitiveString(CareOf)
+                .WithCaseInsensitiveString(Line1)
+                .WithCaseInsensitiveString(Line2)
+                .WithCaseInsensitiveString(City)
+                .WithCaseInsensitiveString(State)
+                .WithCaseInsensitiveString(Country)
+                .WithCaseInsensitiveString(PostalCode)
+                .Build()
+                .Value;
         }
 
         public static bool operator ==(UnitedStatesAddress first, UnitedStatesAddress second)
