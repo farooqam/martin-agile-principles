@@ -23,12 +23,11 @@ namespace BigCorp.EmployeeDomain
             return string.Compare(this.Value, ((EmployeeId) other).Value, StringComparison.OrdinalIgnoreCase) == 0;
         }
 
-        protected override int CalculateHashCode()
+        protected override HashCodeBuilder CalculateHashCode()
         {
             return HashCodeBuilder.CreateNew()
                 .WithCaseInsensitiveString(Value)
-                .Build()
-                .Value;
+                .Build();
         }
     }
 }

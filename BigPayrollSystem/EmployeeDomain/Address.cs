@@ -1,4 +1,4 @@
-﻿using System;
+﻿using BigCorp.Utility;
 
 namespace BigCorp.EmployeeDomain
 {
@@ -15,6 +15,29 @@ namespace BigCorp.EmployeeDomain
             Line1 = line1;
             City = city;
             Country = country;
+        }
+
+        protected override bool CheckEquality(Address other)
+        {
+            return CareOf.AreEqualDespiteCase(other.CareOf) &&
+                   Line1.AreEqualDespiteCase(other.Line1) &&
+                   City.AreEqualDespiteCase(other.City) &&
+                   Country.AreEqualDespiteCase(other.Country);
+        }
+
+        protected override bool CheckEqualityUsingOperator(DomainObject<Address> other)
+        {
+            return CheckEquality((Address)other);
+        }
+
+        protected override HashCodeBuilder CalculateHashCode()
+        {
+            return HashCodeBuilder.CreateNew()
+                .WithCaseInsensitiveString(CareOf)
+                .WithCaseInsensitiveString(Line1)
+                .WithCaseInsensitiveString(City)
+                .WithCaseInsensitiveString(Country)
+                .Build();
         }
     }
 }

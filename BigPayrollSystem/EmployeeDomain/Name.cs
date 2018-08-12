@@ -1,5 +1,4 @@
-﻿using System;
-using BigCorp.Utility;
+﻿using BigCorp.Utility;
 
 namespace BigCorp.EmployeeDomain
 {
@@ -35,7 +34,7 @@ namespace BigCorp.EmployeeDomain
             return CheckEquality(name);
         }
 
-        protected override int CalculateHashCode()
+        protected override HashCodeBuilder CalculateHashCode()
         {
             return HashCodeBuilder.CreateNew()
                 .WithCaseInsensitiveString(FirstName)
@@ -43,8 +42,7 @@ namespace BigCorp.EmployeeDomain
                 .WithCaseInsensitiveString(LastName)
                 .WithCaseInsensitiveString(Suffix)
                 .WithCaseInsensitiveString(Title)
-                .Build()
-                .Value;
+                .Build();
         }
     }
 }

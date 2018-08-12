@@ -1,4 +1,5 @@
 ﻿using System;
+using BigCorp.Utility;
 
 namespace BigCorp.EmployeeDomain
 {
@@ -6,7 +7,7 @@ namespace BigCorp.EmployeeDomain
     {
         protected abstract bool CheckEquality(TType other);
         protected abstract bool CheckEqualityUsingOperator(DomainObject<TType> other);
-        protected abstract int CalculateHashCode();
+        protected abstract HashCodeBuilder CalculateHashCode();
         
         public bool Equals(TType other)
         {
@@ -25,7 +26,7 @@ namespace BigCorp.EmployeeDomain
 
         public override int GetHashCode()
         {
-            return CalculateHashCode();
+            return CalculateHashCode().Value;
         }
 
         public static bool operator ==(DomainObject<TType> first, DomainObject<TType> second)
