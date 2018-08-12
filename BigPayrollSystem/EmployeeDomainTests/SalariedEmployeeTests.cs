@@ -31,8 +31,8 @@ namespace BigCorp.EmployeeDomainTests
             var postalCode = "bum";
 
             var address = new UnitedStatesAddress(careOf, line1, line2, city, state, country, postalCode);
-            //UnitedStatesCurrency currency = new UnitedStatesCurrency();
-            //Money salary = new Money(currency, 150000m);
+            UnitedStatesCurrency currency = new UnitedStatesCurrency();
+            Money salary = new Money(currency, 150000m);
 
             // Act
             var newEmployee = SalariedEmployee.CreateNew(employeeId, name, address);

@@ -28,7 +28,7 @@ namespace BigCorp.EmployeeDomain
         }
     }
 
-    public class UnitedStatesCurrency : Currency
+    public sealed class UnitedStatesCurrency : Currency
     {
         public UnitedStatesCurrency() : base("USD")
         {
