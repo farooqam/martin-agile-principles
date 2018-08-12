@@ -29,6 +29,20 @@ namespace BigCorp.EmployeeDomainTests
         }
 
         [Fact]
+        public void EmployeeIds_HaveSameHashCode()
+        {
+            // Arrange
+            var id1 = new EmployeeId("foo");
+            var id2 = new EmployeeId("foo");
+            
+            // Act
+            var hashCodesAreEqual = (id1.GetHashCode() == id2.GetHashCode());
+
+            // Assert
+            hashCodesAreEqual.Should().BeTrue();
+        }
+
+        [Fact]
         public void EmployeeIds_WhenDifferingByCase_AreEqual()
         {
             // Arrange
