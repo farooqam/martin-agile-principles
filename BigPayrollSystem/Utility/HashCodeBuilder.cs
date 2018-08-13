@@ -25,15 +25,17 @@ namespace BigCorp.Utility
 
     public static class HashCodeBuilderFluentApi
     {
+        private const int PrimeNumberForHashCodeCalculation = -1521134295;
+
         public static HashCodeBuilder WithCaseInsensitiveString(this HashCodeBuilder builder, string value)
         {
-            var hashCode = builder.Value * -1521134295 + StringComparer.OrdinalIgnoreCase.GetHashCode(value);
+            var hashCode = builder.Value * PrimeNumberForHashCodeCalculation + StringComparer.OrdinalIgnoreCase.GetHashCode(value);
             return HashCodeBuilder.CreateWithValue(hashCode);
         }
 
         public static HashCodeBuilder WithDecimal(this HashCodeBuilder builder, decimal value)
         {
-            var hashCode = builder.Value * -1521134295 + value.GetHashCode();
+            var hashCode = builder.Value * PrimeNumberForHashCodeCalculation + value.GetHashCode();
             return HashCodeBuilder.CreateWithValue(hashCode);
         }
 
