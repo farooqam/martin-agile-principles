@@ -1,3 +1,4 @@
+using System;
 using BigCorp.EmployeeDomain;
 using FluentAssertions;
 using Xunit;
@@ -43,6 +44,22 @@ namespace BigCorp.EmployeeDomainTests
             newEmployee.Name.Should().Be(new Name(firstName, lastName, middleInitial, suffix, title));
             newEmployee.Address.Should().Be(new UnitedStatesAddress(careOf, line1, line2, city, state, country, postalCode));
             newEmployee.Salary.Should().Be(new Money(new UnitedStatesCurrency(), salaryAmount));
+        }
+
+        [Fact]
+        public void WhenSalaryNull_ThrowException()
+        {
+            // Arrange
+            var employeeId = new EmployeeId("foo");
+            var name = new Name("f", "m", "l", "s", "t");
+            var address = new UnitedStatesAddress("co", "l1", "l2", "city", "st", "cou", "pc");
+            Money salary = null;
+
+            // Act
+            Action action = () => SalariedEmployee.CreateNew(employeeId, name, address, salary);
+
+            // Assert
+            action.Should().Throw<ArgumentException>("Employee salary mus not be null.");
         }
     }
 }

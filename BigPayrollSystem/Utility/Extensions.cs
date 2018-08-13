@@ -2,7 +2,7 @@
 
 namespace BigCorp.Utility
 {
-    public static class EmployeeDomainExtensions
+    public static class Extensions
     {
         public static void EnsureNotNullOrWhitespace(this string s, string messageWhenNotEnsured)
         {
