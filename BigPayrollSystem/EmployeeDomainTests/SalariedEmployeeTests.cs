@@ -1,4 +1,3 @@
-using System.Data.SqlTypes;
 using BigCorp.EmployeeDomain;
 using FluentAssertions;
 using Xunit;
@@ -31,16 +30,19 @@ namespace BigCorp.EmployeeDomainTests
             var postalCode = "bum";
 
             var address = new UnitedStatesAddress(careOf, line1, line2, city, state, country, postalCode);
-            UnitedStatesCurrency currency = new UnitedStatesCurrency();
-            Money salary = new Money(currency, 150000m);
+
+            var salaryAmount = 150000m;
+            var currency = new UnitedStatesCurrency();
+            var salary = new Money(currency, salaryAmount);
 
             // Act
-            var newEmployee = SalariedEmployee.CreateNew(employeeId, name, address);
+            var newEmployee = SalariedEmployee.CreateNew(employeeId, name, address, salary);
 
             // Assert
             newEmployee.EmployeeId.Should().Be(new EmployeeId(employeeIdValue));
             newEmployee.Name.Should().Be(new Name(firstName, lastName, middleInitial, suffix, title));
             newEmployee.Address.Should().Be(new UnitedStatesAddress(careOf, line1, line2, city, state, country, postalCode));
+            newEmployee.Salary.Should().Be(new Money(new UnitedStatesCurrency(), salaryAmount));
         }
     }
 }

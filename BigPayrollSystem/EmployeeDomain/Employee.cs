@@ -16,13 +16,16 @@
 
     public sealed class SalariedEmployee : Employee
     {
-        private SalariedEmployee(EmployeeId employeeId, Name name, UnitedStatesAddress address) : base(employeeId, name, address)
+        public Money Salary { get; }
+
+        private SalariedEmployee(EmployeeId employeeId, Name name, UnitedStatesAddress address, Money salary) : base(employeeId, name, address)
         {
+            Salary = salary;
         }
 
-        public static SalariedEmployee CreateNew(EmployeeId employeeId, Name name, UnitedStatesAddress address)
+        public static SalariedEmployee CreateNew(EmployeeId employeeId, Name name, UnitedStatesAddress address, Money salary)
         {
-            return new SalariedEmployee(employeeId, name, address);
+            return new SalariedEmployee(employeeId, name, address, salary);
         }
     }
 }

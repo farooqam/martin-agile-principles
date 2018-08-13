@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BigCorp.Utility;
+﻿using BigCorp.Utility;
 
 namespace BigCorp.EmployeeDomain
 {
@@ -30,7 +25,7 @@ namespace BigCorp.EmployeeDomain
 
         protected override HashCodeBuilder CalculateHashCode()
         {
-            return Currency.GetHashCode()
+            return Currency.GetHashCodeBuilder().WithDecimal(Value);
         }
     }
 }

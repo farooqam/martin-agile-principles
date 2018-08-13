@@ -31,6 +31,12 @@ namespace BigCorp.Utility
             return HashCodeBuilder.CreateWithValue(hashCode);
         }
 
+        public static HashCodeBuilder WithDecimal(this HashCodeBuilder builder, decimal value)
+        {
+            var hashCode = builder.Value * -1521134295 + value.GetHashCode();
+            return HashCodeBuilder.CreateWithValue(hashCode);
+        }
+
         public static HashCodeBuilder Build(this HashCodeBuilder builder)
         {
             return builder;

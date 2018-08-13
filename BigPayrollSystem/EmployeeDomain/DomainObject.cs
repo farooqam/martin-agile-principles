@@ -29,6 +29,11 @@ namespace BigCorp.EmployeeDomain
             return CalculateHashCode().Value;
         }
 
+        public HashCodeBuilder GetHashCodeBuilder()
+        {
+            return CalculateHashCode();
+        }
+
         public static bool operator ==(DomainObject<TType> first, DomainObject<TType> second)
         {
             if (ReferenceEquals(first, second)) return true;
