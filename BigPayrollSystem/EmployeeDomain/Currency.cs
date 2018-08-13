@@ -27,11 +27,4 @@ namespace BigCorp.EmployeeDomain
                 .Build();
         }
     }
-
-    public sealed class UnitedStatesCurrency : Currency
-    {
-        public UnitedStatesCurrency() : base("USD")
-        {
-        }
-    }
 }
