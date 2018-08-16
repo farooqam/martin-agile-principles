@@ -13,5 +13,10 @@ namespace BigCorp.Utility
         {
             return string.Compare(s, other, StringComparison.OrdinalIgnoreCase) == 0;
         }
+
+        public static void EnsureNotNegative(this decimal value, string messageWhenNotEnsured)
+        {
+            if (value < 0m) throw new ArgumentException(messageWhenNotEnsured);
+        }
     }
 }

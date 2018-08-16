@@ -34,7 +34,7 @@ namespace BigCorp.EmployeeDomainTests
 
             var salaryAmount = 150000m;
             var currency = new UnitedStatesCurrency();
-            var salary = new Money(currency, salaryAmount);
+            var salary = new Money(currency, new MoneyValue(salaryAmount));
 
             // Act
             var newEmployee = SalariedEmployee.CreateNew(employeeId, name, address, salary);
@@ -43,7 +43,7 @@ namespace BigCorp.EmployeeDomainTests
             newEmployee.EmployeeId.Should().Be(new EmployeeId(employeeIdValue));
             newEmployee.Name.Should().Be(new Name(firstName, lastName, middleInitial, suffix, title));
             newEmployee.Address.Should().Be(new UnitedStatesAddress(careOf, line1, line2, city, state, country, postalCode));
-            newEmployee.Salary.Should().Be(new Money(new UnitedStatesCurrency(), salaryAmount));
+            newEmployee.Salary.Should().Be(new Money(new UnitedStatesCurrency(), new MoneyValue(salaryAmount)));
         }
 
         [Fact]
@@ -59,7 +59,7 @@ namespace BigCorp.EmployeeDomainTests
             Action action = () => SalariedEmployee.CreateNew(employeeId, name, address, salary);
 
             // Assert
-            action.Should().Throw<ArgumentException>("Employee salary mus not be null.");
+            action.Should().Throw<ArgumentException>().WithMessage("Employee salary must not be null.");
         }
     }
 }

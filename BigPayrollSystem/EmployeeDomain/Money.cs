@@ -5,9 +5,9 @@ namespace BigCorp.EmployeeDomain
     public sealed class Money : DomainObject<Money>
     {
         public Currency Currency { get; }
-        public decimal Value { get; }
+        public MoneyValue Value { get; }
 
-        public Money(Currency currency, decimal value)
+        public Money(Currency currency, MoneyValue value)
         {
             Currency = currency;
             Value = value;
@@ -25,7 +25,7 @@ namespace BigCorp.EmployeeDomain
 
         protected override HashCodeBuilder CalculateHashCode()
         {
-            return Currency.GetHashCodeBuilder().WithDecimal(Value);
+            return Currency.GetHashCodeBuilder().Add(Value.GetHashCodeBuilder());
         }
     }
 }

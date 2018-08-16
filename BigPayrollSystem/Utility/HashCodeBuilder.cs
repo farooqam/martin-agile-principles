@@ -23,7 +23,7 @@ namespace BigCorp.Utility
         }
     }
 
-    public static class HashCodeBuilderFluentApi
+    public static class HashCodeBuilderExtensions
     {
         private const int PrimeNumberForHashCodeCalculation = -1521134295;
 
@@ -36,6 +36,12 @@ namespace BigCorp.Utility
         public static HashCodeBuilder WithDecimal(this HashCodeBuilder builder, decimal value)
         {
             var hashCode = builder.Value * PrimeNumberForHashCodeCalculation + value.GetHashCode();
+            return HashCodeBuilder.CreateWithValue(hashCode);
+        }
+
+        public static HashCodeBuilder Add(this HashCodeBuilder builder, HashCodeBuilder toAdd)
+        {
+            var hashCode = builder.Value * PrimeNumberForHashCodeCalculation + toAdd.Value;
             return HashCodeBuilder.CreateWithValue(hashCode);
         }
 
