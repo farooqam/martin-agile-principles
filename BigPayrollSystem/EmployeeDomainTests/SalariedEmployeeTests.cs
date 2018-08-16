@@ -47,7 +47,7 @@ namespace BigCorp.EmployeeDomainTests
         }
 
         [Fact]
-        public void WhenSalaryNull_ThrowException()
+        public void WhenSalaryNotSpecified_ThrowException()
         {
             // Arrange
             var employeeId = new EmployeeId("foo");

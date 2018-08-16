@@ -8,7 +8,7 @@ namespace BigCorp.EmployeeDomainTests
     public class EmployeeTests
     {
         [Fact]
-        public void WhenEmployeeIdNull_ThrowException()
+        public void WhenEmployeeIdNotSpecified_ThrowException()
         {
             //Arrange
 
@@ -24,7 +24,7 @@ namespace BigCorp.EmployeeDomainTests
         }
 
         [Fact]
-        public void WhenEmployeeNameNull_ThrowException()
+        public void WhenEmployeeNameNotSpecified_ThrowException()
         {
             //Arrange
 
@@ -40,7 +40,7 @@ namespace BigCorp.EmployeeDomainTests
         }
 
         [Fact]
-        public void WhenEmployeeAddressNull_ThrowException()
+        public void WhenEmployeeAddressNotSpecified_ThrowException()
         {
             //Arrange
 
