@@ -1,4 +1,5 @@
-﻿using BigCorp.EmployeeDomain;
+﻿using System;
+using BigCorp.EmployeeDomain;
 using FluentAssertions;
 using Xunit;
 
@@ -96,6 +97,26 @@ namespace BigCorp.EmployeeDomainTests
 
             // Arrange
             hashCodesAreEqual.Should().BeFalse();
+        }
+
+        [Fact]
+        public void WhenStateNotSpecified_ThrowException()
+        {
+            // Arrange
+            Action action = () => new UnitedStatesAddress("co", "l1", "l2", "city", null, "country", "pc");
+
+            // Act and Assert
+            action.Should().Throw<ArgumentException>().WithMessage("State must not be null or an empty string.");
+        }
+
+        [Fact]
+        public void WhenPostalCodeNotSpecified_ThrowException()
+        {
+            // Arrange
+            Action action = () => new UnitedStatesAddress("co", "l1", "l2", "city", "state", "country", null);
+
+            // Act and Assert
+            action.Should().Throw<ArgumentException>().WithMessage("Postal code must not be null or an empty string.");
         }
     }
 }

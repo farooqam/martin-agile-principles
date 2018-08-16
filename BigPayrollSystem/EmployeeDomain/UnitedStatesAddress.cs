@@ -11,6 +11,9 @@ namespace BigCorp.EmployeeDomain
         public UnitedStatesAddress(string careOf, string line1, string line2, string city, string state, string country, string postalCode)
             :base(careOf, line1, city, country)
         {
+            state.EnsureNotNullOrWhitespace("State must not be null or an empty string.");
+            postalCode.EnsureNotNullOrWhitespace("Postal code must not be null or an empty string.");
+
             Line2 = line2;
             State = state;
             PostalCode = postalCode;
