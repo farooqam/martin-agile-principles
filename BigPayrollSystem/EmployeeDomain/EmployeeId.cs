@@ -9,7 +9,7 @@ namespace BigCorp.EmployeeDomain
 
         public EmployeeId(string id)
         {
-            id.EnsureNotNullOrWhitespace("Employee id value cannot be a null or empty string.");
+            id.EnsureNotNullOrWhitespace("Employee id must not be null or an empty string.");
             Value = id;
         }
 

@@ -11,10 +11,10 @@ namespace BigCorp.EmployeeDomain
 
         protected Address(string careOf, string line1, string city, string country)
         {
-            careOf.EnsureNotNullOrWhitespace("Care of must not be null.");
-            line1.EnsureNotNullOrWhitespace("Line1 must not be null.");
-            city.EnsureNotNullOrWhitespace("City must not be null.");
-            country.EnsureNotNullOrWhitespace("Country must not be null.");
+            careOf.EnsureNotNullOrWhitespace("Care of must not be null or an empty string.");
+            line1.EnsureNotNullOrWhitespace("Line1 must not be null or an empty string.");
+            city.EnsureNotNullOrWhitespace("City must not be null or an empty string.");
+            country.EnsureNotNullOrWhitespace("Country must not be null or an empty string.");
 
             CareOf = careOf;
             Line1 = line1;

@@ -8,7 +8,7 @@ namespace BigCorp.EmployeeDomain
 
         protected Currency(string abbreviation)
         {
-            abbreviation.EnsureNotNullOrWhitespace("Abbreviation must not be null.");
+            abbreviation.EnsureNotNullOrWhitespace("Abbreviation must not be null or an empty string.");
 
             Abbreviation = abbreviation;
         }

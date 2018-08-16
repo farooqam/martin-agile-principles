@@ -101,7 +101,7 @@ namespace BigCorp.EmployeeDomainTests
             Action action = () => new FakeCurrency(abbreviation);
 
             // Assert
-            action.Should().Throw<ArgumentException>().WithMessage("Abbreviation must not be null.");
+            action.Should().Throw<ArgumentException>().WithMessage("Abbreviation must not be null or an empty string.");
         }
     }
 

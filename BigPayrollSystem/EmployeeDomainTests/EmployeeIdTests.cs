@@ -11,7 +11,7 @@ namespace BigCorp.EmployeeDomainTests
         public void EmployeeIdValue_MustBeSpecified()
         {
             Action action = () => new EmployeeId(string.Empty);
-            action.Should().Throw<ArgumentException>().WithMessage("Employee id value cannot be a null or empty string.");
+            action.Should().Throw<ArgumentException>().WithMessage("Employee id must not be null or an empty string.");
         }
 
         [Fact]

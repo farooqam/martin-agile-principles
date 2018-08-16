@@ -16,7 +16,7 @@ namespace BigCorp.EmployeeDomainTests
             var country = "see";
 
             Action action = () => new FakeAddress(careOf, line1, city, country);
-            action.Should().Throw<ArgumentException>().WithMessage("Care of must not be null.");
+            action.Should().Throw<ArgumentException>().WithMessage("Care of must not be null or an empty string.");
         }
 
         [Fact]
@@ -28,7 +28,7 @@ namespace BigCorp.EmployeeDomainTests
             var country = "see";
 
             Action action = () => new FakeAddress(careOf, line1, city, country);
-            action.Should().Throw<ArgumentException>().WithMessage("Line1 must not be null.");
+            action.Should().Throw<ArgumentException>().WithMessage("Line1 must not be null or an empty string.");
         }
 
         [Fact]
@@ -40,7 +40,7 @@ namespace BigCorp.EmployeeDomainTests
             var country = "see";
 
             Action action = () => new FakeAddress(careOf, line1, city, country);
-            action.Should().Throw<ArgumentException>().WithMessage("City must not be null.");
+            action.Should().Throw<ArgumentException>().WithMessage("City must not be null or an empty string.");
         }
 
         [Fact]
@@ -52,7 +52,7 @@ namespace BigCorp.EmployeeDomainTests
             string country = null;
 
             Action action = () => new FakeAddress(careOf, line1, city, country);
-            action.Should().Throw<ArgumentException>().WithMessage("Country must not be null.");
+            action.Should().Throw<ArgumentException>().WithMessage("Country must not be null or an empty string.");
         }
 
     }
