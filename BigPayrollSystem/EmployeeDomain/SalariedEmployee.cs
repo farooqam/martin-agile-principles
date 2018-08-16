@@ -4,7 +4,7 @@
     {
         public Money Salary { get; }
 
-        private SalariedEmployee(EmployeeId employeeId, Name name, UnitedStatesAddress address, Money salary) : base(employeeId, name, address)
+        private SalariedEmployee(EmployeeId employeeId, Name name, Address address, Money salary) : base(employeeId, name, address)
         {
             salary.EnsureNotNull("Employee salary must not be null.");
 
