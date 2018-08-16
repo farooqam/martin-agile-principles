@@ -12,6 +12,9 @@ namespace BigCorp.EmployeeDomain
 
         public Name(string firstName, string middleName, string lastName, string suffix, string title)
         {
+            firstName.EnsureNotNullOrWhitespace("First name must not be null or an empty string.");
+            lastName.EnsureNotNullOrWhitespace("Last name must not be null or an empty string.");
+
             FirstName = firstName;
             MiddleName = middleName;
             LastName = lastName;

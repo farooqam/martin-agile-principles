@@ -1,4 +1,5 @@
-﻿using BigCorp.EmployeeDomain;
+﻿using System;
+using BigCorp.EmployeeDomain;
 using FluentAssertions;
 using Xunit;
 
@@ -110,6 +111,40 @@ namespace BigCorp.EmployeeDomainTests
 
             // Arrange
             hashCodesAreEqual.Should().BeFalse();
+        }
+
+        [Fact]
+        public void WhenFirstNameNotSpecified_ThrowException()
+        {
+            // Arrange
+            string firstName = null;
+            var lastName = "foo";
+            var middleName = "bag";
+            var suffix = "boo";
+            var title = "yay";
+
+            Action action = () => new Name(firstName, middleName, lastName, suffix, title);
+
+            //Act and Assert
+            action.Should().Throw<ArgumentException>().WithMessage("First name must not be null or an empty string.");
+
+        }
+
+        [Fact]
+        public void WhenLastNameNotSpecified_ThrowException()
+        {
+            // Arrange
+            var firstName = "whu";
+            string lastName = null;
+            var middleName = "bag";
+            var suffix = "boo";
+            var title = "yay";
+
+            Action action = () => new Name(firstName, middleName, lastName, suffix, title);
+
+            //Act and Assert
+            action.Should().Throw<ArgumentException>().WithMessage("Last name must not be null or an empty string.");
+
         }
 
     }
