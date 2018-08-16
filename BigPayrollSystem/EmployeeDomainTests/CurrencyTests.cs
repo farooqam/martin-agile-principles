@@ -4,14 +4,14 @@ using Xunit;
 
 namespace BigCorp.EmployeeDomainTests
 {
-    public class UnitedStatesCurrencyTests
+    public class CurrencyTests
     {
         [Fact]
         public void Currencies_AreEqual()
         {
             // Arrange
-            var currency1 = new UnitedStatesCurrency();
-            var currency2 = new UnitedStatesCurrency();
+            var currency1 = new FakeCurrency();
+            var currency2 = new FakeCurrency();
 
             // Act
             var areEqual = currency1 == currency2;
@@ -24,7 +24,7 @@ namespace BigCorp.EmployeeDomainTests
         public void Currencies_WhenDifferingByCase_AreEqual()
         {
             // Arrange
-            var currency1 = new UnitedStatesCurrency();
+            var currency1 = new FakeCurrency("USD");
             var currency2 = new FakeCurrency("usd");
 
             // Act
@@ -38,8 +38,8 @@ namespace BigCorp.EmployeeDomainTests
         public void Currencies_HaveSameHashCode()
         {
             // Arrange
-            var currency1 = new UnitedStatesCurrency();
-            var currency2 = new UnitedStatesCurrency();
+            var currency1 = new FakeCurrency();
+            var currency2 = new FakeCurrency();
 
             // Act
             var hashCodesAreEqual = (currency1.GetHashCode() == currency2.GetHashCode());
@@ -52,7 +52,7 @@ namespace BigCorp.EmployeeDomainTests
         public void Currencies_WhenDifferingByCase_HaveSameHashCode()
         {
             // Arrange
-            var currency1 = new UnitedStatesCurrency();
+            var currency1 = new FakeCurrency("USD");
             var currency2 = new FakeCurrency("usd");
 
             // Act
@@ -66,7 +66,7 @@ namespace BigCorp.EmployeeDomainTests
         public void Currencies_AreNotEqual()
         {
             // Arrange
-            var currency1 = new UnitedStatesCurrency();
+            var currency1 = new FakeCurrency();
             var currency2 = new FakeCurrency("foo");
 
             // Act
@@ -80,7 +80,7 @@ namespace BigCorp.EmployeeDomainTests
         public void Currencies_WhenNotEqual_HaveDifferentHashCodes()
         {
             // Arrange
-            var currency1 = new UnitedStatesCurrency();
+            var currency1 = new FakeCurrency();
             var currency2 = new FakeCurrency("foo");
 
             // Act
