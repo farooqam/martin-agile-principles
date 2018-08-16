@@ -66,5 +66,27 @@ namespace BigCorp.EmployeeDomainTests
             // Assert
             hashCodesEqual.Should().BeFalse();
         }
+
+        [Fact]
+        public void WhenCurrencyNotSpecified_ThrowException()
+        {
+            // Arrange
+            Action action = () => new Money(null, new MoneyValue(100m));
+
+            // Act and Assert
+            action.Should().Throw<ArgumentException>().WithMessage("Currency must not be null.");
+
+        }
+
+        [Fact]
+        public void WhenMoneyValueNotSpecified_ThrowException()
+        {
+            // Arrange
+            Action action = () => new Money(new FakeCurrency(), null);
+
+            // Act and Assert
+            action.Should().Throw<ArgumentException>().WithMessage("Money value must not be null.");
+
+        }
     }
 }

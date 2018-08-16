@@ -9,6 +9,9 @@ namespace BigCorp.EmployeeDomain
 
         public Money(Currency currency, MoneyValue value)
         {
+            currency.EnsureNotNull("Currency must not be null.");
+            value.EnsureNotNull("Money value must not be null.");
+
             Currency = currency;
             Value = value;
         }
