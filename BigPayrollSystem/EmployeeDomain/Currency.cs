@@ -8,6 +8,8 @@ namespace BigCorp.EmployeeDomain
 
         protected Currency(string abbreviation)
         {
+            abbreviation.EnsureNotNullOrWhitespace("Abbreviation must not be null.");
+
             Abbreviation = abbreviation;
         }
         protected override bool CheckEquality(Currency other)

@@ -1,4 +1,5 @@
-﻿using BigCorp.EmployeeDomain;
+﻿using System;
+using BigCorp.EmployeeDomain;
 using FluentAssertions;
 using Xunit;
 
@@ -88,6 +89,19 @@ namespace BigCorp.EmployeeDomainTests
 
             // Assert
             hashCodesAreEqual.Should().BeFalse();
+        }
+
+        [Fact]
+        public void WhenAbbreviationNotSpecified_ThrowException()
+        {
+            // Arrange
+            string abbreviation = null;
+
+            // Act
+            Action action = () => new FakeCurrency(abbreviation);
+
+            // Assert
+            action.Should().Throw<ArgumentException>().WithMessage("Abbreviation must not be null.");
         }
     }
 
