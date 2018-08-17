@@ -11,6 +11,8 @@ namespace BigCorp.Utility
 
         public static bool AreEqualDespiteCase(this string s, string other)
         {
+            if (s == null && other == null) return true;
+            if (s == string.Empty && other == string.Empty) return true;
             return string.Compare(s, other, StringComparison.OrdinalIgnoreCase) == 0;
         }
 

@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeApi", "EmployeeApi\EmployeeApi.csproj", "{C84E25B8-4086-4A56-941F-361007BE5A2A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeApi", "EmployeeApi\EmployeeApi.csproj", "{C84E25B8-4086-4A56-941F-361007BE5A2A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeApiTests", "EmployeeApiTests\EmployeeApiTests.csproj", "{C438C15A-9561-4D54-8013-DB89F222C727}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeApiTests", "EmployeeApiTests\EmployeeApiTests.csproj", "{C438C15A-9561-4D54-8013-DB89F222C727}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeDomain", "EmployeeDomain\EmployeeDomain.csproj", "{9E2B0A3C-2AA0-4073-B4BF-2CB17DE6882B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeDomain", "EmployeeDomain\EmployeeDomain.csproj", "{9E2B0A3C-2AA0-4073-B4BF-2CB17DE6882B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeDomainTests", "EmployeeDomainTests\EmployeeDomainTests.csproj", "{DDB88EC8-9D17-4BF6-AA1C-CB8B0C78D8D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeDomainTests", "EmployeeDomainTests\EmployeeDomainTests.csproj", "{DDB88EC8-9D17-4BF6-AA1C-CB8B0C78D8D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utility", "Utility\Utility.csproj", "{7BF4609D-C067-4C12-9C01-1A5610D04528}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utility", "Utility\Utility.csproj", "{7BF4609D-C067-4C12-9C01-1A5610D04528}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UtilityTests", "UtilityTests\UtilityTests.csproj", "{C2AE5F50-1F9C-434F-A706-19D1DF99DB25}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{7BF4609D-C067-4C12-9C01-1A5610D04528}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7BF4609D-C067-4C12-9C01-1A5610D04528}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7BF4609D-C067-4C12-9C01-1A5610D04528}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2AE5F50-1F9C-434F-A706-19D1DF99DB25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2AE5F50-1F9C-434F-A706-19D1DF99DB25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2AE5F50-1F9C-434F-A706-19D1DF99DB25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2AE5F50-1F9C-434F-A706-19D1DF99DB25}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
