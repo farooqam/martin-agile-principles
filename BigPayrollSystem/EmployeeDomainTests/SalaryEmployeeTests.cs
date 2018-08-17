@@ -135,7 +135,7 @@ namespace BigCorp.EmployeeDomainTests
             Action action = () => SalaryEmployee.CreateNew(employeeId, name, address, salary);
 
             // Assert
-            action.Should().Throw<ArgumentException>().WithMessage("Employee salary must not be null.");
+            action.Should().Throw<EmployeeDomainException>().WithMessage("Employee salary must not be null.");
         }
     }
 }

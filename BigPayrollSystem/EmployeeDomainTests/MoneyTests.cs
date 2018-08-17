@@ -74,7 +74,7 @@ namespace BigCorp.EmployeeDomainTests
             Action action = () => new Money(null, new MoneyValue(100m));
 
             // Act and Assert
-            action.Should().Throw<ArgumentException>().WithMessage("Currency must not be null.");
+            action.Should().Throw<EmployeeDomainException>().WithMessage("Currency must not be null.");
 
         }
 
@@ -85,7 +85,7 @@ namespace BigCorp.EmployeeDomainTests
             Action action = () => new Money(new FakeCurrency(), null);
 
             // Act and Assert
-            action.Should().Throw<ArgumentException>().WithMessage("Money value must not be null.");
+            action.Should().Throw<EmployeeDomainException>().WithMessage("Money value must not be null.");
 
         }
     }

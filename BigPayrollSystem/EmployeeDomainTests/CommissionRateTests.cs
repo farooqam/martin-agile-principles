@@ -74,7 +74,7 @@ namespace BigCorp.EmployeeDomainTests
             Action action = () => new CommissionRate(null);
 
             // Act & Assert
-            action.Should().Throw<ArgumentException>().WithMessage("Commission rate value must not be null.");
+            action.Should().Throw<EmployeeDomainException>().WithMessage("Commission rate value must not be null.");
 
             
         }

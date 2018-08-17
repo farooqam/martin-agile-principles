@@ -138,7 +138,7 @@ namespace BigCorp.EmployeeDomainTests
             Action action = () => new FakeEmployee(employeeId, name, address);
 
             // Assert
-            action.Should().Throw<ArgumentException>().WithMessage("Employee id must not be null.");
+            action.Should().Throw<EmployeeDomainException>().WithMessage("Employee id must not be null.");
 
         }
 
@@ -154,7 +154,7 @@ namespace BigCorp.EmployeeDomainTests
             Action action = () => new FakeEmployee(employeeId, name, address);
 
             // Assert
-            action.Should().Throw<ArgumentException>().WithMessage("Employee name must not be null.");
+            action.Should().Throw<EmployeeDomainException>().WithMessage("Employee name must not be null.");
 
         }
 
@@ -170,7 +170,7 @@ namespace BigCorp.EmployeeDomainTests
             Action action = () => new FakeEmployee(employeeId, name, address);
 
             // Assert
-            action.Should().Throw<ArgumentException>().WithMessage("Employee address must not be null.");
+            action.Should().Throw<EmployeeDomainException>().WithMessage("Employee address must not be null.");
 
         }
     }

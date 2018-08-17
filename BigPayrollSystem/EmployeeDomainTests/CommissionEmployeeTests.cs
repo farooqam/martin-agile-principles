@@ -142,7 +142,7 @@ namespace BigCorp.EmployeeDomainTests
 
             // Act & Assert
 
-            action.Should().Throw<ArgumentException>().WithMessage("Commission rate must not be null.");
+            action.Should().Throw<EmployeeDomainException>().WithMessage("Commission rate must not be null.");
 
             
         }

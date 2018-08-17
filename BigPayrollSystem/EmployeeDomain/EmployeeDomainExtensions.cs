@@ -6,7 +6,7 @@ namespace BigCorp.EmployeeDomain
     {
         public static void EnsureNotNull<TType>(this DomainObject<TType> domainObject, string messageWhenNotEnsured) where TType : class 
         {
-            if(domainObject == null) throw new ArgumentException(messageWhenNotEnsured);
+            if(domainObject == null) throw new EmployeeDomainException(messageWhenNotEnsured);
         }
     }
 }

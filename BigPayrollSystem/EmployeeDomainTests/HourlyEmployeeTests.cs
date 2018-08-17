@@ -121,7 +121,7 @@ namespace BigCorp.EmployeeDomainTests
             Action action = () => HourlyEmployee.CreateNew(employeeId, name, address, null);
 
             // Act & Assert
-            action.Should().Throw<ArgumentException>().WithMessage("Hourly rate must not be null.");
+            action.Should().Throw<EmployeeDomainException>().WithMessage("Hourly rate must not be null.");
 
             
         }

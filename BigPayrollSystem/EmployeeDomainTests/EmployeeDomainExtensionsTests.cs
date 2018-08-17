@@ -16,7 +16,7 @@ namespace BigCorp.EmployeeDomainTests
             Action action = () => domainObject.EnsureNotNull("foo");
             
             // Act & Assert
-            action.Should().Throw<ArgumentException>().WithMessage("foo");
+            action.Should().Throw<EmployeeDomainException>().WithMessage("foo");
         }
 
         [Fact]
