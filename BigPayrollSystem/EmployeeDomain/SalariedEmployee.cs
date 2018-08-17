@@ -11,7 +11,7 @@
             Salary = salary;
         }
 
-        public static SalariedEmployee CreateNew(EmployeeId employeeId, Name name, UnitedStatesAddress address, Money salary)
+        public static SalariedEmployee CreateNew(EmployeeId employeeId, Name name, Address address, Money salary)
         {
             return new SalariedEmployee(employeeId, name, address, salary);
         }
