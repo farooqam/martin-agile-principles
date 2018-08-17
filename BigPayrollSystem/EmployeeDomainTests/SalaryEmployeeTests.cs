@@ -11,39 +11,115 @@ namespace BigCorp.EmployeeDomainTests
         public void CreateNew_CreatesSalaryEmployee()
         {
             // Arrange
-            var employeeIdValue = "foo";
-            var employeeId = new EmployeeId(employeeIdValue);
-
-            var firstName = "foo";
-            var lastName = "bar";
-            var middleInitial = "qux";
-            var suffix = "baz";
-            var title = "boo";
-
-            var name = new Name(firstName, lastName, middleInitial, suffix, title);
-
-            var careOf = "foo";
-            var line1 = "bar";
-            var line2 = "bee";
-            var city = "boo";
-            var state = "hee";
-            var country = "haw";
-            var postalCode = "bum";
-
-            var address = new UnitedStatesAddress(careOf, line1, line2, city, state, country, postalCode);
-
-            var salaryAmount = 150000m;
-            var currency = new UnitedStatesCurrency();
-            var salary = new Money(currency, new MoneyValue(salaryAmount));
+            var employeeId = new EmployeeId("foo");
+            var name = new Name("bar", null, "bee", null, null);
+            var address = new FakeAddress();
+            var salary = new Money(new FakeCurrency(), new MoneyValue(100000m));
 
             // Act
-            var newEmployee = SalaryEmployee.CreateNew(employeeId, name, address, salary);
+            var employee = SalaryEmployee.CreateNew(employeeId, name, address, salary);
 
             // Assert
-            newEmployee.EmployeeId.Should().Be(new EmployeeId(employeeIdValue));
-            newEmployee.Name.Should().Be(new Name(firstName, lastName, middleInitial, suffix, title));
-            newEmployee.Address.Should().Be(new UnitedStatesAddress(careOf, line1, line2, city, state, country, postalCode));
-            newEmployee.Salary.Should().Be(new Money(new UnitedStatesCurrency(), new MoneyValue(salaryAmount)));
+            employee.EmployeeId.Should().Be(employeeId);
+            employee.Name.Should().Be(name);
+            employee.Address.Should().Be(address);
+            employee.Salary.Should().Be(salary);
+        }
+
+        [Fact]
+        public void SalaryEmployees_AreEqual()
+        {
+            // Arrange
+            var employee1 = SalaryEmployee.CreateNew(
+                new EmployeeId("foo"),
+                new Name("bar", null, "bee", null, null), 
+                new FakeAddress(), 
+                new Money(new FakeCurrency(), new MoneyValue(100000m)));
+
+            var employee2 = SalaryEmployee.CreateNew(
+                new EmployeeId("foo"),
+                new Name("bar", null, "bee", null, null), 
+                new FakeAddress(), 
+                new Money(new FakeCurrency(), new MoneyValue(100000m)));
+
+            // Act
+            var areEqual = employee1 == employee2;
+
+            // Assert
+            areEqual.Should().BeTrue();
+
+        }
+
+        [Fact]
+        public void SalaryEmployees_AreNotEqual()
+        {
+            // Arrange
+            var employee1 = SalaryEmployee.CreateNew(
+                new EmployeeId("foo"),
+                new Name("bar", null, "bee", null, null),
+                new FakeAddress(),
+                new Money(new FakeCurrency(), new MoneyValue(100000m)));
+
+            var employee2 = SalaryEmployee.CreateNew(
+                new EmployeeId("foo"),
+                new Name("bar", null, "bee", null, null),
+                new FakeAddress(),
+                new Money(new FakeCurrency(), new MoneyValue(200000m)));
+
+            // Act
+            var areEqual = employee1 == employee2;
+
+            // Assert
+            areEqual.Should().BeFalse();
+
+        }
+
+        [Fact]
+        public void SalaryEmployees_WhenEqual_HaveSameHashCode()
+        {
+            // Arrange
+            var employee1 = SalaryEmployee.CreateNew(
+                new EmployeeId("foo"),
+                new Name("bar", null, "bee", null, null),
+                new FakeAddress(),
+                new Money(new FakeCurrency(), new MoneyValue(100000m)));
+
+            var employee2 = SalaryEmployee.CreateNew(
+                new EmployeeId("foo"),
+                new Name("bar", null, "bee", null, null),
+                new FakeAddress(),
+                new Money(new FakeCurrency(), new MoneyValue(100000m)));
+
+            // Act
+            var hashCodesEqual = employee1.GetHashCode() == employee2.GetHashCode();
+
+            // Assert
+            hashCodesEqual.Should().BeTrue();
+
+        }
+
+        [Fact]
+        public void SalaryEmployees_WhenNotEqual_HaveDifferentHashCodes()
+        {
+            // Arrange
+            var employee1 = SalaryEmployee.CreateNew(
+                new EmployeeId("foo"),
+                new Name("bar", null, "bee", null, null),
+                new FakeAddress(),
+                new Money(new FakeCurrency(), new MoneyValue(100000m)));
+
+            var employee2 = SalaryEmployee.CreateNew(
+                new EmployeeId("foo"),
+                new Name("bar", null, "bee", null, null),
+                new FakeAddress(),
+                new Money(new FakeCurrency(), new MoneyValue(200000m)));
+
+            // Act
+            var hashCodesEqual = employee1.GetHashCode() == employee2.GetHashCode();
+
+            // Assert
+            hashCodesEqual.Should().BeFalse();
+
         }
 
         [Fact]
@@ -52,7 +128,7 @@ namespace BigCorp.EmployeeDomainTests
             // Arrange
             var employeeId = new EmployeeId("foo");
             var name = new Name("f", "m", "l", "s", "t");
-            var address = new UnitedStatesAddress("co", "l1", "l2", "city", "st", "cou", "pc");
+            var address = new FakeAddress();
             Money salary = null;
 
             // Act

@@ -59,6 +59,11 @@ namespace BigCorp.EmployeeDomainTests
 
     public class FakeAddress : Address
     {
+        public FakeAddress() : this("careOf", "line1", "city", "country")
+        {
+            
+        }
+
         public FakeAddress(string careOf, string line1, string city, string country) : base(careOf, line1, city, country)
         {
         }

@@ -29,6 +29,8 @@ namespace BigCorp.Utility
 
         public static HashCodeBuilder WithCaseInsensitiveString(this HashCodeBuilder builder, string value)
         {
+            if (string.IsNullOrWhiteSpace(value)) return builder;
+
             var hashCode = builder.Value * PrimeNumberForHashCodeCalculation + StringComparer.OrdinalIgnoreCase.GetHashCode(value);
             return HashCodeBuilder.CreateWithValue(hashCode);
         }

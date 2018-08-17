@@ -1,6 +1,8 @@
-﻿namespace BigCorp.EmployeeDomain
+﻿using BigCorp.Utility;
+
+namespace BigCorp.EmployeeDomain
 {
-    public abstract class Employee
+    public abstract class Employee : DomainObject<Employee>
     {
         public EmployeeId EmployeeId { get; }
         public Name Name { get; }
@@ -15,6 +17,27 @@
             EmployeeId = employeeId;
             Name = name;
             Address = address;
+        }
+
+        protected override bool CheckEquality(Employee other)
+        {
+            return EmployeeId == other.EmployeeId &&
+                   Name == other.Name &&
+                   Address == other.Address;
+        }
+
+        protected override bool CheckEqualityUsingOperator(DomainObject<Employee> other)
+        {
+            return CheckEquality((Employee) other);
+        }
+
+        protected override HashCodeBuilder CalculateHashCode()
+        {
+            return HashCodeBuilder
+                .CreateNew()
+                .Add(EmployeeId.GetHashCodeBuilder())
+                .Add(Name.GetHashCodeBuilder())
+                .Add(Address.GetHashCodeBuilder());
         }
     }
 }

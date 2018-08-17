@@ -29,6 +29,106 @@ namespace BigCorp.EmployeeDomainTests
         }
 
         [Fact]
+        public void CommissionEmployees_AreEqual()
+        {
+            // Arrange
+            var employee1 = CommissionEmployee.CreateNew(
+                new EmployeeId("foo"),
+                new Name("f", null, "l", null, null),
+                new FakeAddress(),
+                new CommissionRate(new CommissionRateValue(0.05m)),
+                new Money(new FakeCurrency(), new MoneyValue(100000m)));
+
+            var employee2 = CommissionEmployee.CreateNew(
+                new EmployeeId("foo"),
+                new Name("f", null, "l", null, null),
+                new FakeAddress(),
+                new CommissionRate(new CommissionRateValue(0.05m)),
+                new Money(new FakeCurrency(), new MoneyValue(100000m)));
+
+            // Act
+            var areEqual = employee1 == employee2;
+
+            // Assert
+            areEqual.Should().BeTrue();
+        }
+
+        [Fact]
+        public void CommissionEmployees_WhenEqual_HaveSameHashCode()
+        {
+            // Arrange
+            var employee1 = CommissionEmployee.CreateNew(
+                new EmployeeId("foo"),
+                new Name("f", null, "l", null, null),
+                new FakeAddress(),
+                new CommissionRate(new CommissionRateValue(0.05m)),
+                new Money(new FakeCurrency(), new MoneyValue(100000m)));
+
+            var employee2 = CommissionEmployee.CreateNew(
+                new EmployeeId("foo"),
+                new Name("f", null, "l", null, null),
+                new FakeAddress(),
+                new CommissionRate(new CommissionRateValue(0.05m)),
+                new Money(new FakeCurrency(), new MoneyValue(100000m)));
+
+            // Act
+            var hashCodesEqual = employee1.GetHashCode() == employee2.GetHashCode();
+
+            // Assert
+            hashCodesEqual.Should().BeTrue();
+        }
+
+        [Fact]
+        public void CommissionEmployees_AreNotEqual()
+        {
+            // Arrange
+            var employee1 = CommissionEmployee.CreateNew(
+                new EmployeeId("foo"),
+                new Name("f", null, "l", null, null),
+                new FakeAddress(),
+                new CommissionRate(new CommissionRateValue(0.05m)),
+                new Money(new FakeCurrency(), new MoneyValue(100000m)));
+
+            var employee2 = CommissionEmployee.CreateNew(
+                new EmployeeId("foo"),
+                new Name("f", null, "l", null, null),
+                new FakeAddress(),
+                new CommissionRate(new CommissionRateValue(0.10m)),
+                new Money(new FakeCurrency(), new MoneyValue(100000m)));
+
+            // Act
+            var areEqual = employee1 == employee2;
+
+            // Assert
+            areEqual.Should().BeFalse();
+        }
+
+        [Fact]
+        public void CommissionEmployees_WhenNotEqual_HaveDifferentHashCodes()
+        {
+            // Arrange
+            var employee1 = CommissionEmployee.CreateNew(
+                new EmployeeId("foo"),
+                new Name("f", null, "l", null, null),
+                new FakeAddress(),
+                new CommissionRate(new CommissionRateValue(0.10m)),
+                new Money(new FakeCurrency(), new MoneyValue(100000m)));
+
+            var employee2 = CommissionEmployee.CreateNew(
+                new EmployeeId("foo"),
+                new Name("f", null, "l", null, null),
+                new FakeAddress(),
+                new CommissionRate(new CommissionRateValue(0.05m)),
+                new Money(new FakeCurrency(), new MoneyValue(100000m)));
+
+            // Act
+            var hashCodesEqual = employee1.GetHashCode() == employee2.GetHashCode();
+
+            // Assert
+            hashCodesEqual.Should().BeFalse();
+        }
+
+        [Fact]
         public void WhenRateNotSpecified_ThrowsException()
         {
             // Arrange
