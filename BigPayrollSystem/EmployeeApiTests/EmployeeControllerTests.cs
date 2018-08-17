@@ -31,9 +31,9 @@ namespace BigCorp.EmployeeApiTests
         }
 
         [Fact]
-        public void AddEmployee_AddsAnSalariedEmployee()
+        public void AddEmployee_AddsAnSalaryEmployee()
         {
-            AddSalariedEmployeeRequestModel model = new AddSalariedEmployeeRequestModel
+            AddSalaryEmployeeRequestModel model = new AddSalaryEmployeeRequestModel
             {
                 Id = "143554AEL1223",
                 Name = "H.G. Pennypacker",
@@ -41,14 +41,14 @@ namespace BigCorp.EmployeeApiTests
                 Salary = 150000m
             };
 
-            IActionResult response = _controller.AddSalariedEmployee(model);
+            IActionResult response = _controller.AddSalaryEmployee(model);
             response.Should().BeAssignableTo<OkResult>();
         }
 
         [Fact]
         public void AddEmployee_AddsACommissionedEmployee()
         {
-            AddCommissionedEmployeeRequestModel model = new AddCommissionedEmployeeRequestModel
+            AddCommissionEmployeeRequestModel model = new AddCommissionEmployeeRequestModel
             {
                 Id = "143554AEL1223",
                 Name = "H.G. Pennypacker",
@@ -57,7 +57,7 @@ namespace BigCorp.EmployeeApiTests
                 Salary = 150000m
             };
 
-            IActionResult response = _controller.AddCommissionedEmployee(model);
+            IActionResult response = _controller.AddCommissionEmployee(model);
             response.Should().BeAssignableTo<OkResult>();
         }
     }

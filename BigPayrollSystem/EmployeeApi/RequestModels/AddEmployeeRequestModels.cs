@@ -7,7 +7,7 @@ namespace BigCorp.EmployeeApi.RequestModels
         public string Address { get; set; }
     }
 
-    public sealed class AddSalariedEmployeeRequestModel : AddEmployeeRequestModel
+    public sealed class AddSalaryEmployeeRequestModel : AddEmployeeRequestModel
     {
         public decimal Salary { get; set; }
     }
@@ -17,7 +17,7 @@ namespace BigCorp.EmployeeApi.RequestModels
         public decimal Rate { get; set; }
     }
 
-    public sealed class AddCommissionedEmployeeRequestModel : AddEmployeeRequestModel
+    public sealed class AddCommissionEmployeeRequestModel : AddEmployeeRequestModel
     {
         public decimal Salary { get; set; }
         public decimal Rate { get; set; }

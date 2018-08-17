@@ -17,18 +17,18 @@ namespace BigCorp.EmployeeApi.Controllers
             return Ok();
         }
 
-        [Route("/salaried")]
+        [Route("/salary")]
         [HttpPost]
         [ProducesResponseType((int)HttpStatusCode.Created)]
-        public IActionResult AddSalariedEmployee([FromBody] AddSalariedEmployeeRequestModel model)
+        public IActionResult AddSalaryEmployee([FromBody] AddSalaryEmployeeRequestModel model)
         {
             return Ok();
         }
 
-        [Route("/commissioned")]
+        [Route("/commission")]
         [HttpPost]
         [ProducesResponseType((int)HttpStatusCode.Created)]
-        public IActionResult AddCommissionedEmployee([FromBody] AddCommissionedEmployeeRequestModel model)
+        public IActionResult AddCommissionEmployee([FromBody] AddCommissionEmployeeRequestModel model)
         {
             return Ok();
         }

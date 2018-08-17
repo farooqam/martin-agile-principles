@@ -18,5 +18,11 @@ namespace BigCorp.Utility
         {
             if (value < 0m) throw new ArgumentException(messageWhenNotEnsured);
         }
+
+        public static void EnsureWithinRangeInclusive<TType>(this TType value, TType low, TType hi, string messageWhenNotEnsured)
+            where TType : IComparable<TType>
+        {
+            if(value.CompareTo(low) < 0 || value.CompareTo(hi) > 0) throw new ArgumentException(messageWhenNotEnsured);
+        }
     }
 }

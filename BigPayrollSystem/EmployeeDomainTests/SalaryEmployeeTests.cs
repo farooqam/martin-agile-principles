@@ -5,10 +5,10 @@ using Xunit;
 
 namespace BigCorp.EmployeeDomainTests
 {
-    public class SalariedEmployeeTests
+    public class SalaryEmployeeTests
     {
         [Fact]
-        public void CreateNew_CreatesSalariedEmployee()
+        public void CreateNew_CreatesSalaryEmployee()
         {
             // Arrange
             var employeeIdValue = "foo";
@@ -37,7 +37,7 @@ namespace BigCorp.EmployeeDomainTests
             var salary = new Money(currency, new MoneyValue(salaryAmount));
 
             // Act
-            var newEmployee = SalariedEmployee.CreateNew(employeeId, name, address, salary);
+            var newEmployee = SalaryEmployee.CreateNew(employeeId, name, address, salary);
 
             // Assert
             newEmployee.EmployeeId.Should().Be(new EmployeeId(employeeIdValue));
@@ -56,7 +56,7 @@ namespace BigCorp.EmployeeDomainTests
             Money salary = null;
 
             // Act
-            Action action = () => SalariedEmployee.CreateNew(employeeId, name, address, salary);
+            Action action = () => SalaryEmployee.CreateNew(employeeId, name, address, salary);
 
             // Assert
             action.Should().Throw<ArgumentException>().WithMessage("Employee salary must not be null.");
