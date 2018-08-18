@@ -13,7 +13,7 @@ namespace BigCorp.EmployeeDomainTests
             // Arrange
             EmployeeId employeeId = new EmployeeId("foo");
             Name name = new Name("fee", null, "fo", null, null);
-            FakeAddress address = new FakeAddress("co", "l1", "city", "country");
+            FakeAddress address = new FakeAddress(new FakeName(), "l1", "city", "country");
             CommissionRate rate = new CommissionRate(new CommissionRateValue(0.03m));
             Money salary = new Money(new FakeCurrency(), new MoneyValue(100000m));
 
@@ -136,7 +136,7 @@ namespace BigCorp.EmployeeDomainTests
             Action action = () => CommissionEmployee.CreateNew(
                 new EmployeeId("foo"),
                 new Name("bar", null, "boo", null, null),
-                new FakeAddress("co", "l1", "city", "country"),
+                new FakeAddress(new FakeName(), "l1", "city", "country"),
                 null,
                 new Money(new FakeCurrency(), new MoneyValue(100000m)));
 

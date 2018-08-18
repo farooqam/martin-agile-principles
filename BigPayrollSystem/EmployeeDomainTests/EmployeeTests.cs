@@ -102,7 +102,7 @@ namespace BigCorp.EmployeeDomainTests
             // Arrange
             
             var employee1 = new FakeEmployee(new EmployeeId("foo"), new Name("bar", null, "bee", null, null), new FakeAddress());
-            var employee2 = new FakeEmployee(new EmployeeId("bar"), new Name("hoo", null, "bee", null, null), new FakeAddress("co", "zzz", "ggg", "uuu"));
+            var employee2 = new FakeEmployee(new EmployeeId("bar"), new Name("hoo", null, "bee", null, null), new FakeAddress(new FakeName(), "zzz", "ggg", "uuu"));
 
             // Act
             var areEqual = employee1 == employee2;
@@ -117,7 +117,7 @@ namespace BigCorp.EmployeeDomainTests
             // Arrange
 
             var employee1 = new FakeEmployee(new EmployeeId("foo"), new Name("bar", null, "bee", null, null), new FakeAddress());
-            var employee2 = new FakeEmployee(new EmployeeId("bar"), new Name("hoo", null, "bee", null, null), new FakeAddress("co", "zzz", "ggg", "uuu"));
+            var employee2 = new FakeEmployee(new EmployeeId("bar"), new Name("hoo", null, "bee", null, null), new FakeAddress(new FakeName(), "zzz", "ggg", "uuu"));
 
             // Act
             var hashCodesEqual = employee1.GetHashCode() == employee2.GetHashCode();
@@ -132,7 +132,7 @@ namespace BigCorp.EmployeeDomainTests
             //Arrange
 
             Name name = new Name("first", "mid", "last", "s", "t");
-            UnitedStatesAddress address = new UnitedStatesAddress("co", "l1", "l2", "c", "s", "country", "pc");
+            UnitedStatesAddress address = new UnitedStatesAddress(new FakeName(), "l1", "l2", "c", "s", "country", "pc");
             EmployeeId employeeId = null;
 
             Action action = () => new FakeEmployee(employeeId, name, address);
@@ -148,7 +148,7 @@ namespace BigCorp.EmployeeDomainTests
             //Arrange
 
             Name name = null;
-            UnitedStatesAddress address = new UnitedStatesAddress("co", "l1", "l2", "c", "s", "country", "pc");
+            UnitedStatesAddress address = new UnitedStatesAddress(new FakeName(), "l1", "l2", "c", "s", "country", "pc");
             EmployeeId employeeId = new EmployeeId("foo");
 
             Action action = () => new FakeEmployee(employeeId, name, address);

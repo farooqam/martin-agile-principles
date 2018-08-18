@@ -8,7 +8,7 @@ namespace BigCorp.EmployeeDomain
         public string State { get;  }
         public string PostalCode { get;  }
 
-        public UnitedStatesAddress(string careOf, string line1, string line2, string city, string state, string country, string postalCode)
+        public UnitedStatesAddress(Name careOf, string line1, string line2, string city, string state, string country, string postalCode)
             :base(careOf, line1, city, country)
         {
             state.EnsureNotNullOrWhitespace("State must not be null or an empty string.");
